@@ -324,6 +324,21 @@ transition-delay: .3s background-color
 
 
 /*
+**************** OVERFLOW STYLES ****************
+*/
+
+
+
+overflow: auto;   /* 	if content begins to overflow it's element's box, then the content will automatically wrap
+			and create a scroll bar to scroll down through
+		  */
+overflow: scroll;
+overflow: hidden;
+overflow: visible;
+
+
+
+/*
 **************** BACKGROUND IMAGES/ELEMENTS ****************
 */
 
