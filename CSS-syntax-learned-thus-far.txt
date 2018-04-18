@@ -1,0 +1,432 @@
+*** THREE TYPES OF CSS
+
+- EXTERNAL - With an external CSS sheet
+
+- INTERNAL - within <head><style>....</style></head>
+
+- INLINE - eg <p style="color:red; font-size:18;">...</p>
+
+
+
+/*
+**************** USED TO IMPORT OTHER EXTERNAL STYLE SHEETS ****************
+*/
+
+
+
+@import "file-name.css"; - how to import a local style sheet into another style sheet
+@import url("url location"); - how to import a style sheet from a url into another style sheet
+
+
+
+/*
+**************** DISPLAY YOUR OBJECTS INLINE OR IN BLOCKS ****************
+*/
+
+
+
+display: block;   /* 	will make object have it's own block instead of 
+			sitting on the same line as another tag/text
+
+			1. block
+
+				2. block
+
+				3. block
+		  */
+display: inline;   /* 	will make object sit next to another object that also displays inline 
+
+			1. block
+
+				2. inline 3. inline
+				4. inline 5. inline
+		   */
+display: inline-block;   /* 	will make object act as a block while sitting inline with another object
+
+				1. block
+
+					2. inline 3. inline-block 4. inline
+
+					5. inline 6. inline 7. inline
+					8. inline 9. inline
+
+					10. inline-block 11. inline 12. inline
+			 */
+display: flex;   /* allows block level elements within container to be able to sit beside each other
+		    in a stylized way
+		 */
+
+flex-direction: row;   /* 	this is the default setting allowing the outermost block elements
+				within the flexed container to exist side by side
+		       */
+flex-direction: row-reverse;   /* same as row although block level elements are reversed in order */
+flex-direction: column;   /*	flex setting that allows for block level elements within flexed container
+				to sit vertically
+			  */
+flex-direction: column-reverse;   /* same as column although block level elements are reversed in order */
+flex-direction: inherit;   /* allows child elements to inherit the parent level element's flex style */
+
+float: left;   /* allows block level element to float along the left side of it's containing element */
+float: right;   /* allows block level element to float along the right side of it's containing element */
+float: none;   /* default. will not float/remove float property from an element */
+float: inherit;   /* will inherit the parent's float property */
+
+clear: left;   /* 	will allow object to sit outside of left floated objects within it's container.
+			normally, an object "floats" above non-floating, or non-cleared, elements within
+			it's container. The clear setting gives an element awareness that something is above
+			it and allows the element to move from underneath that floated element. In this case,
+			anything with clear: left will be aware of objects that are float: left; and move away
+			from them to the right of them.
+	       */
+clear: right;   /* 	now if something is also floating right, then it will take a clear: right; for the element
+			to be aware that something is floating above on the right side of the container. These two
+			cases considered together, an object that both clear: left; and clear: right; will be aware
+			of objects floating on either side of it's container, and sit away from underneath them
+		*/	
+clear: both;   /* clear: both; is equivalent to clear: left AND clear: right at the same time */
+clear: inherit   /* inherit will allow the element to inherit it's parent's clear properties */
+
+
+
+/*
+**************** POSITIONING STYLES ****************
+*/
+
+
+position: static;   /* 	this is the default position setting for objects. no position effect is applied and 
+			static is unaffected by top, bottom, left, right
+		    */
+position: relative;   /* relative position is used to specifically place the left, top, right, bottom values e.g.
+
+			position: relative;
+			top: 30px;
+			right: 60px;
+
+			the values of top, bottom, etc mean specifically HOW FAR TO MOVE AWAY FROM THAT RESPECTIVE SIDE
+			e.g. top: 30px; means move down from the top 30px;  
+			e.g. right: 60px; means move LEFT from the right 60px;
+			*******ALSO*******, for example, -30px means 30PX TO THE TOP!!! and -60px means 60PX TO THE TOP!!!
+			
+			you can move the relative position of an object over another object, so they are on top of each other
+			similiar to how an object will float on top of another unless cleared
+		      */
+position: absolute;   /* moves an object with respect to it's parent element e.g.
+			
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+
+			in this case the object in question, let's say an image has this position style. 
+			*******AS LONG AS THE PARENT ELEMENT HAS POSITION: RELATIVE*******, the image 
+			will be 0px away from the bottom and left sides of the parent *******ELEMENT'S PADDING*******
+			Even if the viewport is resized the image would sit at that exact 
+			place in the padding of it's parent element
+		      */
+position: fixed;   /* is just like position: absolute ALTHOUGH RELATIVE TO THE VIEWPORT NOT THE PARENT ELEMENT!!! */
+position: sticky;   /* 	acts like relative until the viewport attempts to move beyond the element; then, the element
+			switches to fixed (relative to the viewport) as defined by the top, left, bottom, right styles
+			
+			position: sticky;
+			bottom: 0;
+
+			in this case the element will be 0px away from the bottom of the viewport WHEN THE 
+			****BOTTOM**** OF THE VIEWPORT MOVES ABOVE AND PAST THE ELEMENT; thus sticking to the bottom 
+			of the page. Although! once the viewport is able to view the element's relative position then the 
+			element will stay where it's relative poisition is UNTIL the viewport once again moves beyond the 
+			relative position
+
+			position: sticky;
+			bottom: 0;
+			top: 0;
+
+			in this case, the element will respond to the viewport moving past it EITHER above it 
+			OR below it by making it stick to the page relative to the side attempting to scroll past the 
+			element's relative position (e.g. if the viewport scrolls down beyond the relative position of the
+			element, as the top of the page begins to scroll past the element, the element will stick to the top 
+			of the page until returning into a place on the page where it's natural relative position sits. The
+			same goes for the bottom as the bottom of the page attempts to scroll past the element: the element
+			will stick to the bottom of the page. the same will go for if left: and right: are specified when
+			scrolling left or right across the page
+
+			position: sticky;
+			bottom: 50px;
+			top: 100px;
+
+			this case operates just as all the rest have before it. the only difference is how soon the viewport
+			gets to the element before making it sticky. This code above says that at 50px from the bottom of the
+			viewport, the element will become sticky and stick with 50px away from the bottom, scrolling up, until
+			returning to >50px of the bottom of it's element's relative position. the element becomes sticky at
+			100px from the top, when scrolling down, and will stick 100px away from the top until returning to
+			>100px from the top of the element's relative position.
+
+
+
+/*
+**************** TYPOGRAPHY ****************
+*/
+
+
+
+color: blue;   /* pick from a limited amount of named colors */
+color: #000;   /* pick from a list of hex numbers to describe your color */
+color: #0G0G0G;   /* pick from a more specific list of hex numbers to describe your color */
+color: rgb(26, 32, 270);   /* stands for color red gren blue; changes color; first # is red, second # is green, third # is blue */
+color: rgba(0, 0, 0, 0.5);   /* stands for color red green blue *ALPHA CHANNEL*; alpha channel translates as opacity rating; 
+				so the fourth value "0.5" is the opacity variable 
+			     */
+color: hsl(359, 100%, 43%);   /* stands for color *hue* *saturation* *luminosity*; ranges from 0-359, 0-100%, 0-100% */
+
+
+
+font: italic, small-caps, 700, 32px, 1.2em, 'Roboto';   /* shorthand for font: style, variant, weight, size, line-height, family;
+
+
+
+font-style: normal;   /* text is not slanted; and is upright */
+font-style: italic;   /* text is slightly slanted */
+font-style: oblique;   /* text is greatly slanted */
+
+font-variant: normal;   /* each letter is it's normal lowercase font glyph */
+font-variant: small-caps;   /* each letter is uppercase; although the same SIZE as it's normal lowercase glyphs */
+
+font-weight: normal;   /* normal font text thickness of each glyph; with a rating of 400 */
+font-weight: bold;   /* font thickness with a rating of 700 */
+font-weight: 600;   /* semi-bold; slightly thinner than bold; with a rating of 600; rating goes from 100-900 */
+font-weight: lighter;   /* a relative font thickness relative to the last font-weight used before it */
+
+font-size: 32px;   /* size by pixel */
+font-size: 1.8em;   /* percentage of parent font-size; e.g. 1.8em = 180% parent font size */
+font-size: smaller;   /* or "larger;" creates a font size relative to the parent font's size */
+
+line-height: 1.6;   /* describes the padding size around the text content of each line in a unitless measurement [recommened] */
+line-height: 32px;   /* describes the padding size around the text content of each line in an absolute size of pixels */
+line-height: 1.2em;   /* describes the padding size around the text content of each line in a relative size relative to the parent line-height  */ 
+
+font-family: 'font name here in single quotations', second font name no quotations, third font, etc;
+
+letter-spacing: normal;   /* uses the letter spacing normally defaulted in the browser being used */
+letter-spacing: 2px;   /* adds 2px of space inbetween each LETTER */
+letter-spacing: .12em;   /* ADDS 0.12em of space inbetween each LETTER */
+
+text-align: center;   /* makes text align along the center of a line */
+text-align: justify;   /* makes as many blocks & glyphs as possible fit onto one line and the first word on that line 
+			  is along the left edge and the last word is along the right edge. 
+		       */
+text-align: left;   /* makes text align to the left side of a line */
+text-align: right;   /* makes text align to the right side of a line */
+
+text-decoration: none;   /* removes any text decoration such as the underline along a hyperlinked text */
+text-decoration: underline;   /* adds an underline underneath respective text */
+
+text-indent: 0;   /* normal setting for browsers; leaves first line of text un-indented text */
+text-indent: 40px;   /* indents first line of text by listed number of pixels; can be positive or negative */
+text-indent: -1.2em;   /* indents first line of text by listed em of space; can be positive or negative */
+
+text-overflow: clip;   /* makes text whose line runs outside it's border CLIPPED off i.e. it will continue beyond the line behind the line 
+			  e.g. Hello wo
+		       */
+text-overflow: ellipsis;   /* makes text whose line runs outside it's border like this: e.g. Hell... */
+
+text-shadow: 2px 6px;   /* similar to box-shadow, the first variable is the horizontal offset and the second variable is the vertical offset
+			   positive values will offset to the right and down, respectively; Negative values will offset to the left and up respectively.
+			*/
+text-shadow: 2px 6px red;   /* will offset as mentioned above plus now a color is added to the shadow, you can use #hex-numbers, rgb(), rgba(), hsl(), etc */
+text-shadow: 2px 6px 8px #7H8H9H;   /* will offset horizontally and vertically as mentioned above; with the color specified in the code; 
+				       plus now there will be a blur to the color specified
+				    */
+
+text-transform: none;   /* will leave the text as is and not capitalize the first letters, make every glyph it's capital letter version, 
+			   or make every glyph it's lowercase letter version
+			*/
+text-transform: capitalize;   /* will make every first letter of text capitalized */
+text-transform: uppercase;   /* will make EVERY letter of text uppercase letters */
+text-transform: lowercase;   /* wll make EVERY letter of text lowercase letters */
+
+white-space: normal;   /* line breaks are ignored AND text is WRAPPED */
+white-space: nowrap;   /* line breaks are ignored AND text IS NOT WRAPPED */
+
+word-wrap: break-word;   /* word-WRAP: BREAK-WORD will WRAP WORDS AND BREAK a word when it is a very very long word that takes up a whole line;
+			    this is used for the english and most standard languages besides Chinese, Japanese, and Korean
+			 */
+word-break: break-all;   /* this WILL NOT WRAP WORDS AND WILL BREAK AT EVERY CHANCE IT GETS; this is used for Chinese, Japanese, and Korean languages */
+
+word-spacing: normal;   /* similar to letter-spacing:, will add space between EACH WORD, instead of letter; 
+			   this option keeps the normal amount of space between words current 
+			*/
+word-spacing: 2px;   /* adds 2px of space inbetween words */
+word-spacing: 1.2em;   /* adds 1.2em of space inbetween words */
+
+
+
+/*
+**************** USED FOR LISTS ****************
+*/
+
+
+
+list-style: none, outside, url("");  /* changes an ul's or ol's bullet style, you can put all your properties in this one 
+					declaration without having to add extra declarations on new lines of code. the order 
+					you add the properties in is: type (e.g. none), position (e.g. inside or outside), 
+					and url(""). If one value is missing ( e.g. square, url("") ) then the missing property 
+					will have it's default property added ( e.g. ul - circle, ol - numerals, ul & ol - outside. 
+					If url is left out, the default circle, numeral, or property you declare will be shown ) 
+				     *\
+
+list-style-type: none;   /* most commonly used single declaration to make a list's bullets disappear *\
+list-style-type: circle;   /* turns bullets into circles *\
+list-style-type: square;   /* turns bullets into squares *\
+list-style-type: upper-roman;   /* turns bullets into uppercase roman numerals *\
+list-style-type: lower-roman;   /* turns bullets into lowercase roman numerals *\
+list-style-type: upper-alpha;   /* turns bullets into uppercase alphabet *\
+list-style-type: lower-alpha;   /* turns bullets into lowercase alphabet *\
+
+list-style-position: inside;   /* moves bullets to outside of text, and aligns text alongside bullets *\
+list-style-position: outside;   /* indents text with bullets *\
+
+list-style-image: url("insert url here");   /* used to make a picture for each bullet of a list *\
+
+
+
+/*
+**************** PSEUDO-CLASSES & PSEUDO-ELEMENTS ****************
+*/
+
+
+
+/* A Pseudo-CLASS is used to define a special STATE of an element
+   A Pseudo-ELEMENT is used to style specified PARTS OF AN ELEMENT
+
+   A Pseudo-CLASS is represented by a ":" (colon) after an element
+   e.g. a:HOVER {color: rgba(27, 87, 90, 0.5);}
+   A Pseudo-ELEMENT is representd by a "::" (double colon) after an element
+   e.g. a::FIRST-LINE {color: rgba(27, 87, 90, 0.5);}
+*/
+
+a:link {styles;}		| <---
+a:visited {styles;}		| Must be done in this 
+a:hover	{styles;}		| order within stylesheet
+a:active {styles;}		| <---
+
+/* Other examples of pseudo classes and elements */
+
+p.className:first-of-type:first-letter   /* 
+
+
+
+/*
+**************** TRANSITIONING ELEMENTS ****************
+*/
+
+
+
+transition-delay: .3s background-color
+
+
+
+/*
+**************** BACKGROUND IMAGES/ELEMENTS ****************
+*/
+
+
+
+background-image: url("url-goes-here.png"), url("back-up-url-goes-here-as-well.jpg");   /* 	creates an image as the background
+												within block level/body elements 
+											*/
+background-image: linear-gradient(black, white);   /* 	the linear-gradient(u, b, w); attribute will blend color top down in the
+							order of the colors listed as the argument of the function. The blending
+							will take place from the top down across the width of div and evenly blending
+							across the height of the div
+						   */
+background-image: radial-gradient(black, white);   /*	same as linear-gradient except blends from the center point outward */
+background-image: repeating-linear-gradient(red, black, yellow 20%)   /*	same as linear-gradient the only difference is that
+									any percent within the argument of the function
+									sets how often the linear-gradient repeats
+									e.g. 20% repeats every 20% of the div's height (repeats 5 times)
+									e.g. 33% repeats every 33% of the div's height (repeats 3 times)
+									NOTE: you can also use the percent effect within liner-gradient
+									to set at what percent of the height of the div the colors blend at
+								     */
+background-image: repeating-radial-gradient(red, black, yellow 20%   /* same as repeating-linear-gradient, except from the center
+									point outward
+								     */
+
+background-repeat: no-repeat, repeat;   /* 	the image will start in top left corner and fill up it's width 
+						and height's worth amount of space within the block level element.
+						it can be set to repeat multiple times across the remaining space
+						of the block level element, or not
+					*/
+
+background-attachment: scroll;   /* sets the background image to scroll away if you scroll away from the image. */
+background-attachment: fixed;   /* 	opposite of scroll, fixes image to one point on screen to where no matter how much
+					you scroll it still stays at that exact point on the screen. This is really good for
+					putting content in the back of pages and the adding divs that float on top of it that
+					take up the whole width of the fixed background image, so when you scroll down the
+					background image appears and disappears, which looks really cool. Can also be used for
+					the + sign that's in the bottom of every app. that way as you scroll down so does the 
+					+ sign
+				*/
+background-attachment: local;   /* 	set an image so that it scrolls with it's element. In essence, if the image is local to an
+					iframe then the image will scroll within the iframe although not as you scroll the page the
+					iframe sits in
+				*/
+background-attachment: inherit   /* inherits the parent element's background-attachment property */
+
+background-clip: border-box;   /* 	the background-clip property allows an image to extend to the end of it's border, to the end
+					of it's padding, or to the end of it's content. In this case, background-clip: border-box;
+					is the default value and sets the image to the outside edge of it's border
+			       */
+background-clip: padding-box;   /* this is just as border-box is although to the outer edge of the padding */
+background-clip: content-box;   /* this is just as padding-box is although to the outer edge of the content */
+background-clip: inherit;   /* this sets the image to inherit the background-clip property of it's parent element */
+
+background-color: black;   /*	a background color can be set as well and is best practice to set a background color when using
+				a background image, so that if the image doesn't load or is corrupted there will be a style present
+			   */
+
+
+
+/*
+**************** BORDER STYLES ****************
+*/
+
+
+
+border: width color style;   /* this is shorthand property for all you can do with borders in CSS */
+
+border-style: dotted;   /* THE STYLE OF A BORDER IS ALWAYS SET BEFORE IT'S WIDTH. style names explain it all */
+border-style: dashed;
+border-style: solid;
+border-style: double;
+border-style: groove;
+border-style: ridge;
+border-style: inset;
+border-style: outset;
+border-style: none;   /*	the difference between hidden and none is that even if a border is hidden you can still adjust it's width
+				although if you have no border there is no extra space inbetween the padding and the margin
+		      */
+border-style: hidden;
+
+border-radius: 50%;   /*	border radius creates rounded edges around the border, and can be used to create a circular border if the 
+				border is a square. If the border is a rectangle, the most that can be achieved is an oval. You can adjust
+				all four corners at the same time by using one value
+border-radius: 32px 42px;   /*	or you can adjust the TOP-LEFT/BOTTOM-RIGHT and TOP-RIGHT/BOTTOM-LEFT. think diagonals are adjusted by
+				using one value
+			    */
+border-radius: 1.4em 1.5em 1.9em   /* or you can adjust the TOP-LEFT and TOP-RIGHT/BOTTOM-LEFT and BOTTOM-RIGHT corners with 3 values */
+border-radius: 10% 20% 30% 50%   /* or you can adjust each corner individually starting top-left and going clockwise */
+
+border-width: 32px;   /* adusts the thickness of the border around an element */
+
+border-color: blue;   /* adjusts the color of the border around an element */
+
+
+
+/*
+**************** OUTLINES ****************
+*/
+
+
+
+A NOTE ABOUT OUTLINES: outlines have the same syntax as borders (replace border with outline) and function the same WITH
+ONE KEY DIFFERENCE: they extend beyond the border and cross into the margin WITHOUT AFFECTING THE MARGIN SIZE.
+i.e. outlines overlap the margin
